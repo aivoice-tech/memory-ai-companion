@@ -10,70 +10,117 @@
             margin: 0;
             padding: 60px 20px;
             line-height: 1.75;
-            color: #333;
-            background-color: #f8f9fa;
+            color: #e5e5e5;
+            background-color: #05050a;
         }
         .container {
             max-width: 860px;
             margin: 0 auto;
-            background: white;
+            background: #000000;
             padding: 60px 50px;
             border-radius: 12px;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.0);
+            border: 1px solid #000000;
         }
+
+        /* Name + signature row */
+        .name-signature {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px; /* space between name and signature */
+        }
+
         h1 {
             color: #0d6efd;
             font-size: 2.8em;
             margin-bottom: 6px;
             font-weight: 600;
+            /* remove top margin collapse issues */
+            margin-top: 0;
         }
+
+        .signature-image {
+            height: 1em;          /* roughly matches the cap height of the G [web:10] */
+            width: auto;          /* keep aspect ratio [web:10][web:18] */
+            display: block;
+        }
+
         .subtitle {
-            color: #555;
+            color: #aab4cf;
             font-size: 1.35em;
             margin-bottom: 40px;
             font-weight: 400;
         }
         h2 {
-            color: #222;
+            color: #f1f3f8;
             font-size: 1.55em;
             border-bottom: 3px solid #0d6efd;
             padding-bottom: 10px;
             margin-top: 50px;
         }
+        p {
+            color: #d5d9e5;
+        }
         ul {
             line-height: 1.85;
             padding-left: 20px;
+            color: #c4cadb;
         }
         li {
             margin-bottom: 8px;
         }
         .highlight {
             font-weight: 600;
-            color: #0d6efd;
+            color: #e9ecf5;
             font-size: 1.1em;
             margin: 35px 0 25px 0;
             padding: 15px 0;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
+            border-top: 1px solid #252a3a;
+            border-bottom: 1px solid #252a3a;
+            background: radial-gradient(circle at top left, rgba(13,110,253,0.08), transparent 55%);
         }
         .contact {
             margin-top: 55px;
             padding-top: 30px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #252a3a;
             font-size: 1.15em;
+            color: #ccd2e3;
         }
         a {
-            color: #0d6efd;
+            color: #62a4ff;
             text-decoration: none;
         }
         a:hover {
+            color: #9bc3ff;
             text-decoration: underline;
+        }
+
+        /* Responsive tweak */
+        @media (max-width: 600px) {
+            body {
+                padding: 30px 10px;
+            }
+            .container {
+                padding: 35px 22px;
+            }
+            .name-signature {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Gary Seath</h1>
+<div class="name-signature">
+    <h1>Gary Seath</h1>
+    <img
+        class="signature-image"
+        src="./signature.jpg"
+        alt="Signature initials for Gary Seath"
+    >
+</div>
+
         <p class="subtitle">AI Voice Builder &amp; Hardware Engineer</p>
        
         <p>I design and build practical, real-world AI voice systems with a focus on accessibility, reliability, and usability — particularly for elderly users.</p>
