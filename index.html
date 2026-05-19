@@ -5,205 +5,203 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gary Seath | AI Voice Builder & Hardware Engineer</title>
 <style>
-  :root {
-    --white-full: rgba(255, 255, 255, 1);
-    --white-90:  rgba(240, 240, 250, .9);
-    --white-80:  rgba(240, 240, 250, .8);
-    --white-70:  rgba(240, 240, 250, .7);
-    --white-60:  rgba(240, 240, 250, .6);
-    --white-50:  rgba(240, 240, 250, .5);
-  }
+:root {
+  --scale: 0.75;
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  --white-full: rgba(255, 255, 255, 1);
+  --white-90: rgba(240, 240, 250, .9);
+  --white-80: rgba(240, 240, 250, .8);
+  --white-70: rgba(240, 240, 250, .7);
+  --white-60: rgba(240, 240, 250, .6);
+  --white-50: rgba(240, 240, 250, .5);
+}
 
-  html, body {
-    height: 100%;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+html, body {
+  height: 100%;
+}
+
+body {
+  /* core background effect */
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background-color: #000;
+  background-image:
+    radial-gradient(circle at 20% -10%, rgba(80, 120, 255, 0.35), transparent 55%),
+    radial-gradient(circle at 80% 110%, rgba(180, 80, 255, 0.45), transparent 55%),
+    linear-gradient(145deg, #02030a 0%, #050816 35%, #050814 60%, #05060c 100%);
+  color: var(--white-90);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: calc(40px * var(--scale)) calc(20px * var(--scale));
+}
+
+.container {
+  max-width: calc(860px * var(--scale));
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 15, 0.95),
+    rgba(15, 15, 25, 0.95)
+  );
+  padding: calc(40px * var(--scale)) calc(40px * var(--scale));
+  border-radius: calc(24px * var(--scale));
+  box-shadow:
+    0 40px 120px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+}
+
+/* Name + signature row */
+.name-signature {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(16px * var(--scale));
+}
+
+h1 {
+  color: var(--white-full);
+  font-size: calc(2.8em * var(--scale));
+  margin-bottom: calc(6px * var(--scale));
+  font-weight: 700;
+  margin-top: 0;
+  letter-spacing: 0.02em;
+}
+
+.signature-image {
+  height: 1em;
+  width: auto;
+  display: block;
+}
+
+.subtitle {
+  color: var(--white-70);
+  font-size: calc(1.35em * var(--scale));
+  margin-bottom: calc(32px * var(--scale));
+  font-weight: 400;
+}
+
+h2 {
+  color: var(--white-full);
+  font-size: calc(1.55em * var(--scale));
+  border-bottom: 3px solid rgba(150, 190, 255, 0.9);
+  padding-bottom: calc(10px * var(--scale));
+  margin-top: calc(40px * var(--scale));
+  margin-bottom: calc(20px * var(--scale));
+}
+
+p {
+  color: var(--white-80);
+  line-height: 1.75;
+  font-size: calc(1em * var(--scale));
+}
+
+ul {
+  line-height: 1.85;
+  padding-left: calc(20px * var(--scale));
+  color: var(--white-70);
+  margin-top: calc(10px * var(--scale));
+  font-size: calc(1em * var(--scale));
+}
+
+li {
+  margin-bottom: calc(8px * var(--scale));
+}
+
+.highlight {
+  font-weight: 600;
+  color: var(--white-full);
+  font-size: calc(1.1em * var(--scale));
+  margin: calc(35px * var(--scale)) 0 calc(25px * var(--scale)) 0;
+  padding: calc(18px * var(--scale)) 0;
+  border-top: 1px solid rgba(90, 110, 160, 0.5);
+  border-bottom: 1px solid rgba(90, 110, 160, 0.5);
+  background:
+    radial-gradient(circle at top left, rgba(120, 160, 255, 0.16), transparent 55%);
+}
+
+.contact {
+  margin-top: calc(45px * var(--scale));
+  padding-top: calc(25px * var(--scale));
+  border-top: 1px solid rgba(90, 110, 160, 0.4);
+  font-size: calc(1.05em * var(--scale));
+  color: var(--white-80);
+}
+
+a {
+  color: #9bc3ff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-location-date {
+  font-size: calc(0.8em * var(--scale));
+  color: var(--white-60);
+  margin-top: calc(10px * var(--scale));
+}
+
+/* Responsive tweak */
+@media (max-width: 600px) {
   body {
-    /* core background effect */
-    overflow-x: hidden;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-    background-color: #000;
-    background-image:
-      radial-gradient(circle at 20% -10%, rgba(80, 120, 255, 0.35), transparent 55%),
-      radial-gradient(circle at 80% 110%, rgba(180, 80, 255, 0.45), transparent 55%),
-      linear-gradient(145deg, #02030a 0%, #050816 35%, #050814 60%, #05060c 100%);
-    color: var(--white-90);
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 40px 20px;
+    padding: calc(24px * var(--scale)) calc(10px * var(--scale));
   }
-
   .container {
-    max-width: 860px;
-    width: 100%;
-    background: linear-gradient(
-      135deg,
-      rgba(10, 10, 15, 0.95),
-      rgba(15, 15, 25, 0.95)
-    );
-    padding: 40px 40px;
-    border-radius: 24px;
-    box-shadow:
-      0 40px 120px rgba(0, 0, 0, 0.85),
-      0 0 0 1px rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(16px);
+    padding: calc(28px * var(--scale)) calc(22px * var(--scale));
+    border-radius: calc(20px * var(--scale));
   }
-
-  /* Name + signature row */
-  .name-signature {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  h1 {
-    color: var(--white-full);
-    font-size: 2.8em;
-    margin-bottom: 6px;
-    font-weight: 700;
-    margin-top: 0;
-    letter-spacing: 0.02em;
-  }
-
-  .signature-image {
-    height: 1em;
-    width: auto;
-    display: block;
-  }
-
-  .subtitle {
-    color: var(--white-70);
-    font-size: 1.35em;
-    margin-bottom: 32px;
-    font-weight: 400;
-  }
-
-  h2 {
-    color: var(--white-full);
-    font-size: 1.55em;
-    border-bottom: 3px solid rgba(150, 190, 255, 0.9);
-    padding-bottom: 10px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-  }
-
-  p {
-    color: var(--white-80);
-    line-height: 1.75;
-  }
-
-  ul {
-    line-height: 1.85;
-    padding-left: 20px;
-    color: var(--white-70);
-    margin-top: 10px;
-  }
-
-  li {
-    margin-bottom: 8px;
-  }
-
-  .highlight {
-    font-weight: 600;
-    color: var(--white-full);
-    font-size: 1.1em;
-    margin: 35px 0 25px 0;
-    padding: 18px 0;
-    border-top: 1px solid rgba(90, 110, 160, 0.5);
-    border-bottom: 1px solid rgba(90, 110, 160, 0.5);
-    background:
-      radial-gradient(circle at top left, rgba(120, 160, 255, 0.16), transparent 55%);
-  }
-
-  .contact {
-    margin-top: 45px;
-    padding-top: 25px;
-    border-top: 1px solid rgba(90, 110, 160, 0.4);
-    font-size: 1.05em;
-    color: var(--white-80);
-  }
-
-  a {
-    color: #9bc3ff;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #ffffff;
-    text-decoration: underline;
-  }
-
-  .footer-location-date {
-    font-size: 0.8em;
-    color: var(--white-60);
-    margin-top: 10px;
-  }
-
-  /* Responsive tweak */
-  @media (max-width: 600px) {
-    body {
-      padding: 24px 10px;
-    }
-    .container {
-      padding: 28px 22px;
-      border-radius: 20px;
-    }
-  }
+}
 </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Gary Seath</h1>
-    <p class="subtitle">AI Voice Builder &amp; Hardware Engineer</p>
-
-    <p>
-      I design and build practical, real-world AI voice systems with a focus on accessibility,
-      reliability, and usability — particularly for elderly users.
-    </p>
-
-    <h2>Featured Project: Memory</h2>
-    <p><strong>Memory</strong> is an AI voice companion developed specifically for elderly users. It combines embedded hardware with real-time cloud AI to deliver natural, helpful interaction.</p>
-    <ul>
-      <li>Real-time bidirectional voice streaming using ESP32 + I2S</li>
-      <li>Persistent medication reminder system with warm, patient dialogue</li>
-      <li>Push-to-Talk (PTT) interface for deliberate and clear interaction</li>
-      <li>Custom Python bridge with echo management and low-latency streaming</li>
-      <li>Built from the ground up with Gemini Live (Zephyr voice)</li>
-    </ul>
-
-    <p class="highlight">
-      I am currently seeking contract, freelance, or project-based opportunities in AI voice,
-      conversational AI, and voice hardware integration — either remotely (UK/US) or
-      on-site/hybrid in Johannesburg.
-    </p>
-
-    <div class="contact">
-      <strong>Contact:</strong><br>
-      Tel: <a href="tel:+27633011254">+27 63 301 1254</a><br>
-      Email: <a href="mailto:aivoicetech@proton.me">aivoicetech@proton.me</a><br>
-      Website: <a href="https://www.aivoice.technology/" target="_blank">aivoice.technology</a><br>
-      LinkedIn: <a href="https://www.linkedin.com/in/gary-seath/" target="_blank">linkedin.com/in/gary-seath/</a><br>
-      LinkedIn Profile: <a href="https://github.com/aivoice-tech/memory-ai-companion/blob/main/LinkedIn_Profile.pdf" target="_blank">PDF Version</a><br>
-      Latest Project: <a href="https://github.com/aivoice-tech/memory-ai-companion" target="_blank">GitHub</a><br>
-      Resumé: <a href="https://raw.githubusercontent.com/aivoice-tech/memory-ai-companion/main/Gary_Seath_Resume-April-2026-Updated.pdf" target="_blank">PDF version</a>
-    </div>
-
-    <br>
-    <img src="https://aivoice.technology/signature.jpg"
-         alt="signature"
-         style="height: 80px;">
-
-    <p class="footer-location-date">
-      Johannesburg, South Africa – 19 May 2026
-    </p>
+<div class="container">
+  <h1>Gary Seath</h1>
+  <p class="subtitle">AI Voice Builder &amp; Hardware Engineer</p>
+  <p>
+    I design and build practical, real-world AI voice systems with a focus on accessibility,
+    reliability, and usability — particularly for elderly users.
+  </p>
+  <h2>Featured Project: Memory</h2>
+  <p><strong>Memory</strong> is an AI voice companion developed specifically for elderly users. It combines embedded hardware with real-time cloud AI to deliver natural, helpful interaction.</p>
+  <ul>
+    <li>Real-time bidirectional voice streaming using ESP32 + I2S</li>
+    <li>Persistent medication reminder system with warm, patient dialogue</li>
+    <li>Push-to-Talk (PTT) interface for deliberate and clear interaction</li>
+    <li>Custom Python bridge with echo management and low-latency streaming</li>
+    <li>Built from the ground up with Gemini Live (Zephyr voice)</li>
+  </ul>
+  <p class="highlight">
+    I am currently seeking contract, freelance, or project-based opportunities in AI voice,
+    conversational AI, and voice hardware integration — either remotely (UK/US) or
+    on-site/hybrid in Johannesburg.
+  </p>
+  <div class="contact">
+    <strong>Contact:</strong><br>
+    Tel: <a href="tel:+27633011254">+27 63 301 1254</a><br>
+    Email: <a href="mailto:aivoicetech@proton.me">aivoicetech@proton.me</a><br>
+    Website: <a href="https://www.aivoice.technology/" target="_blank">aivoice.technology</a><br>
+    LinkedIn: <a href="https://www.linkedin.com/in/gary-seath/" target="_blank">linkedin.com/in/gary-seath/</a><br>
+    LinkedIn Profile: <a href="https://github.com/aivoice-tech/memory-ai-companion/blob/main/LinkedIn_Profile.pdf" target="_blank">PDF Version</a><br>
+    Latest Project: <a href="https://github.com/aivoice-tech/memory-ai-companion" target="_blank">GitHub</a><br>
+    Resumé: <a href="https://raw.githubusercontent.com/aivoice-tech/memory-ai-companion/main/Gary_Seath_Resume-April-2026-Updated.pdf" target="_blank">PDF version</a>
   </div>
+  <br>
+  <img src="https://aivoice.technology/signature.jpg"
+       alt="signature"
+       style="height: calc(80px * var(--scale));">
+  <p class="footer-location-date">
+    Johannesburg, South Africa – 19 May 2026
+  </p>
+</div>
 </body>
 </html>
