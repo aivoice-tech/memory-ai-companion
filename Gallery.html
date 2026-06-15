@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Product Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #111;
+      color: #fff;
+    }
+
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 16px 0 32px;
+    }
+
+    .product-card {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      background: #000;
+    }
+
+    /* key rule: full-width image, keep full picture */
+    .product-image {
+      display: block;
+      width: 100%;
+      height: auto;   /* maintains original aspect ratio */
+    }
+
+    .product-info {
+      padding: 10px 14px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
+    }
+
+    .product-name {
+      font-weight: 500;
+    }
+
+    .product-price {
+      font-weight: 600;
+      color: #4ade80;
+    }
+  </style>
+</head>
+<body>
+  <div class="gallery">
+    <!-- Bluetooth Speaker - R275 -->
+    <div class="product-card">
+      <img src="BT-Speaker2.jpeg" alt="Bluetooth Speaker" class="product-image" />
+      <div class="product-info">
+        <span class="product-name">Bluetooth Speaker</span>
+        <span class="product-price">R275</span>
+      </div>
+    </div>
+
+    <!-- Powerbank - R275 -->
+    <div class="product-card">
+      <img src="Powerbank.jpg" alt="Powerbank" class="product-image" />
+      <div class="product-info">
+        <span class="product-name">Powerbank</span>
+        <span class="product-price">R275</span>
+      </div>
+    </div>
+
+    <!-- Smart Watch - R250 -->
+    <div class="product-card">
+      <img src="Smart-Watch.jpg" alt="Smart Watch" class="product-image" />
+      <div class="product-info">
+        <span class="product-name">Smart Watch</span>
+        <span class="product-price">R250</span>
+      </div>
+    </div>
+
+    <!-- Bluetooth Headphones - R250 -->
+    <div class="product-card">
+      <img src="Bluetooth-Headphones.jpeg" alt="Bluetooth Headphones" class="product-image" />
+      <div class="product-info">
+         <span class="product-name">Bluetooth Headphones</span>
+        <span class="product-price">R250</span>
+      </div>
+    </div>
+
+    <!-- Gaming Keyboard & Mouse - R299 -->
+    <div class="product-card">
+      <img src="Gaming-Keyboard-and-Mouse.jpeg" alt="Gaming Keyboard & Mouse" class="product-image" />
+      <div class="product-info">
+        <span class="product-name">Gaming Keyboard & Mouse</span>
+        <span class="product-price">R299</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
