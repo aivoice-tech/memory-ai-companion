@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Product Gallery</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+/* Page title */
+.page-title {
+  text-align: center;
+  font-size: 28px;          /* adjust size as you like */
+  font-weight: 600;
+  padding: 20px 16px 8px;   /* space around the title */
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 8px 0 32px;      /* small gap below title, rest at bottom */
+}
+.product-card {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #333;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+.product-info {
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  border-bottom: 1px solid #222; /* clear break before image */
+  background: #050505;
+}
+.product-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.product-name {
+  font-weight: 500;
+}
+.product-price {
+  font-weight: 600;
+  color: #4ade80;
+}
+</style>
+</head>
+<body>
+
+<h1 class="page-title">Gary's Mobile Tech Shop</h1>
+
+<div class="gallery">
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Bluetooth Speaker</span>
+      <span class="product-price">R275</span>
+    </div>
+    <img src="https://aivoice.technology/BT-Speaker2.jpeg" alt="Bluetooth Speaker" class="product-image" />
+  </div>
+
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Powerbank</span>
+      <span class="product-price">R275</span>
+    </div>
+    <img src="https://aivoice.technology/Powerbank.JPG" alt="Powerbank" class="product-image" />
+  </div>
+
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Smart Watch</span>
+      <span class="product-price">R250</span>
+    </div>
+    <img src="https://aivoice.technology/Smart-Watch.png" alt="Smart Watch" class="product-image" />
+  </div>
+
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Bluetooth Headphones</span>
+      <span class="product-price">R250</span>
+    </div>
+    <img src="https://aivoice.technology/Bluetooth-Headphones.jpeg" alt="Bluetooth Headphones" class="product-image" />
+  </div>
+
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Gaming Keyboard & Mouse</span>
+      <span class="product-price">R299</span>
+    </div>
+    <img src="https://aivoice.technology/Gaming-Keyboard-and-Mouse.jpeg" alt="Gaming Keyboard & Mouse" class="product-image" />
+  </div>
+</div>
+</body>
+</html>
