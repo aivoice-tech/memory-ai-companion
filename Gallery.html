@@ -19,16 +19,26 @@ body {
 /* Page title */
 .page-title {
   text-align: center;
-  font-size: 28px;          /* adjust size as you like */
+  font-size: 28px; /* adjust size as you like */
   font-weight: 600;
-  padding: 20px 16px 8px;   /* space around the title */
+  padding: 20px 16px 8px; /* space around the title */
+}
+
+/* Section headings */
+.section-title {
+  max-width: 600px;
+  margin: 24px auto 8px;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 0 16px;
+  border-bottom: 2px solid #333;
 }
 
 .gallery {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 8px 0 32px;      /* small gap below title, rest at bottom */
+  padding: 8px 0 32px; /* small gap below title, rest at bottom */
 }
 .product-card {
   width: 100%;
@@ -64,18 +74,12 @@ body {
 </style>
 </head>
 <body>
-
 <h1 class="page-title">Gary's Mobile Tech Shop</h1>
 
+<!-- New Products section -->
+<h2 class="section-title">New Products</h2>
 <div class="gallery">
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">Bluetooth Speaker</span>
-      <span class="product-price">R275</span>
-    </div>
-    <img src="https://aivoice.technology/BT-Speaker2.jpeg" alt="Bluetooth Speaker" class="product-image" />
-  </div>
-
+  <!-- NEW PRODUCTS (BT Speaker removed from here) -->
   <div class="product-card">
     <div class="product-info">
       <span class="product-name">Powerbank</span>
@@ -108,5 +112,82 @@ body {
     <img src="https://aivoice.technology/Gaming-Keyboard-and-Mouse.jpeg" alt="Gaming Keyboard & Mouse" class="product-image" />
   </div>
 </div>
+
+<!-- Pre-owned Products section -->
+<h2 class="section-title">Pre-owned Products</h2>
+<div class="gallery">
+  <!-- Bluetooth Speaker moved here with R175 -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Bluetooth Speaker</span>
+      <span class="product-price">R175</span>
+    </div>
+    <img src="https://aivoice.technology/BT-Speaker2.jpeg" alt="Bluetooth Speaker" class="product-image" />
+  </div>
+
+  <!-- Pre-owned: Mercedes Benz Tag Heuer watch -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Mercedes Benz Tag Heuer Watch</span>
+      <span class="product-price">R399</span>
+    </div>
+    <img src="Mercedes Benz Tag Heuer watch.jpeg" alt="Mercedes Benz Tag Heuer watch" class="product-image" />
+  </div>
+
+  <!-- Pre-owned: Luminor Panarai automatic watch -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Luminor Panarai Automatic Watch</span>
+      <span class="product-price">R499</span>
+    </div>
+    <img src="Luminor Panarai automatic watch.jpeg" alt="Luminor Panarai automatic watch" class="product-image" />
+  </div>
+
+  <!-- Pre-owned: Mini keyboard and mouse -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Mini Keyboard and Mouse</span>
+      <span class="product-price">R149</span>
+    </div>
+    <img src="Mini keyboard and mouse.jpeg" alt="Mini keyboard and mouse" class="product-image" />
+  </div>
+
+  <!-- Pre-owned: BT Mini keyboard and mouse -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">BT Mini Keyboard and Mouse</span>
+      <span class="product-price">R190</span>
+    </div>
+    <img src="BT Mini keyboard and mouse.jpg" alt="BT Mini keyboard and mouse" class="product-image" />
+  </div>
+
+  <!-- Pre-owned: Laptop cooler fan -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Laptop Cooler Fan</span>
+      <span class="product-price">R40</span>
+    </div>
+    <img src="Laptop cooler fan.jpeg" alt="Laptop cooler fan" class="product-image" />
+  </div>
+
+  <!-- Pre-owned: Binoculars -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Binoculars</span>
+      <span class="product-price">R100</span>
+    </div>
+    <img src="Binoculars.jpeg" alt="Binoculars" class="product-image" />
+  </div>
+
+  <!-- Pre-owned: Phone Stand -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Phone Stand</span>
+      <span class="product-price">R75</span>
+    </div>
+    <img src="Phone Stand.jpeg" alt="Phone Stand" class="product-image" />
+  </div>
+</div>
+
 </body>
 </html>
