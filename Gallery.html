@@ -6,241 +6,230 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <style>
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+box-sizing: border-box;
+margin: 0;
+padding: 0;
 }
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #111;
-  color: #fff;
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+background: #111;
+color: #fff;
 }
-
 /* Page title */
 .page-title {
-  text-align: center;
-  font-size: 28px; /* adjust size as you like */
-  font-weight: 600;
-  padding: 20px 16px 8px; /* space around the title */
+text-align: center;
+font-size: 28px; /* adjust size as you like */
+font-weight: 600;
+padding: 20px 16px 4px; /* slightly reduced bottom padding */
+}
+
+/* Subtitle under page title */
+.page-subtitle {
+text-align: center;
+font-size: 16px;
+padding: 0 16px 8px;
+color: #ccc;
 }
 
 /* Section headings */
 .section-title {
-  max-width: 600px;
-  margin: 24px auto 8px;
-  font-size: 20px;
-  font-weight: 600;
-  padding: 0 16px;
-  border-bottom: 2px solid #333;
+max-width: 600px;
+margin: 24px auto 8px;
+font-size: 20px;
+font-weight: 600;
+padding: 0 16px;
+border-bottom: 2px solid #333;
 }
-
 .gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding: 8px 0 32px; /* small gap below title, rest at bottom */
+display: flex;
+flex-direction: column;
+gap: 24px;
+padding: 8px 0 32px; /* small gap below title, rest at bottom */
 }
 .product-card {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  background: #000;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid #333;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+width: 100%;
+max-width: 600px;
+margin: 0 auto;
+background: #000;
+border-radius: 8px;
+overflow: hidden;
+border: 1px solid #333;
+box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 .product-info {
-  padding: 10px 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 16px;
-  border-bottom: 1px solid #222; /* clear break before image */
-  background: #050505;
+padding: 10px 14px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 16px;
+border-bottom: 1px solid #222; /* clear break before image */
+background: #050505;
 }
 .product-image {
-  display: block;
-  width: 100%;
-  height: auto;
+display: block;
+width: 100%;
+height: auto;
 }
 .product-name {
-  font-weight: 500;
+font-weight: 500;
 }
 .product-price {
-  font-weight: 600;
-  color: #4ade80;
+font-weight: 600;
+color: #4ade80;
 }
 </style>
 </head>
 <body>
 <h1 class="page-title">Gary's Mobile Tech Shop</h1>
+<p class="page-subtitle">WhatsApp me on 063 301 1254</p>
 
 <!-- New Products section -->
 <h2 class="section-title">New Products</h2>
 <div class="gallery">
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">Powerbank</span>
-      <span class="product-price">R275</span>
-    </div>
-    <img src="https://aivoice.technology/Powerbank.JPG" alt="Powerbank" class="product-image" />
-  </div>
-
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">Smart Watch</span>
-      <span class="product-price">R250</span>
-    </div>
-    <img src="https://aivoice.technology/Smart-Watch.png" alt="Smart Watch" class="product-image" />
-  </div>
-
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">Bluetooth Headphones</span>
-      <span class="product-price">R250</span>
-    </div>
-    <img src="https://aivoice.technology/Bluetooth-Headphones.jpeg" alt="Bluetooth Headphones" class="product-image" />
-  </div>
-
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">Gaming Keyboard & Mouse</span>
-      <span class="product-price">R299</span>
-    </div>
-    <img src="https://aivoice.technology/Gaming-Keyboard-and-Mouse.jpeg" alt="Gaming Keyboard & Mouse" class="product-image" />
-  </div>
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">Powerbank</span>
+<span class="product-price">R275</span>
 </div>
-
+<img src="https://aivoice.technology/Powerbank.JPG" alt="Powerbank" class="product-image" />
+</div>
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">Smart Watch</span>
+<span class="product-price">R250</span>
+</div>
+<img src="https://aivoice.technology/Smart-Watch.png" alt="Smart Watch" class="product-image" />
+</div>
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">Bluetooth Headphones</span>
+<span class="product-price">R250</span>
+</div>
+<img src="https://aivoice.technology/Bluetooth-Headphones.jpeg" alt="Bluetooth Headphones" class="product-image" />
+</div>
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">Gaming Keyboard & Mouse</span>
+<span class="product-price">R299</span>
+</div>
+<img src="https://aivoice.technology/Gaming-Keyboard-and-Mouse.jpeg" alt="Gaming Keyboard & Mouse" class="product-image" />
+</div>
+</div>
 <!-- Pre-owned Products section -->
 <h2 class="section-title">Pre-owned Products</h2>
 <div class="gallery">
-  <!-- Bluetooth Speaker -->
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">Bluetooth Speaker</span>
-      <span class="product-price">R175</span>
-    </div>
-    <img src="https://aivoice.technology/BT-Speaker2.jpeg" alt="Bluetooth Speaker" class="product-image" />
-  </div>
-
-  <!-- Mercedes Benz Tag Heuer watch -->
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">Mercedes Benz Tag Heuer Watch</span>
-      <span class="product-price">R399</span>
-    </div>
-    <img src="Mercedes Benz Tag Heuer watch.jpeg" alt="Mercedes Benz Tag Heuer watch" class="product-image" />
-  </div>
-
-  <!-- Luminor Panarai automatic watch -->
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">Luminor Panarai Automatic Watch</span>
-      <span class="product-price">R499</span>
-    </div>
-    <img src="Luminor Panarai automatic watch.jpeg" alt="Luminor Panarai automatic watch" class="product-image" />
-  </div>
-
-  <!-- Mini keyboard and mouse -->
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">Mini Keyboard and Mouse</span>
-      <span class="product-price">R149</span>
-    </div>
-    <img src="Mini keyboard and mouse.jpeg" alt="Mini keyboard and mouse" class="product-image" />
-  </div>
-
-  <!-- BT Mini keyboard and mouse -->
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">BT Mini Keyboard and Mouse</span>
-      <span class="product-price">R190</span>
-    </div>
-    <img src="BT Mini keyboard and mouse.jpg" alt="BT Mini keyboard and mouse" class="product-image" />
-  </div>
-
-  <!-- Laptop cooler fan -->
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">Laptop Cooler Fan</span>
-      <span class="product-price">R40</span>
-    </div>
-    <img src="Laptop cooler fan.jpeg" alt="Laptop cooler fan" class="product-image" />
-  </div>
-
-  <!-- Binoculars -->
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">Binoculars</span>
-      <span class="product-price">R100</span>
-    </div>
-    <img src="Binoculars.jpeg" alt="Binoculars" class="product-image" />
-  </div>
-
-  <!-- Phone Stand -->
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">Phone Stand</span>
-      <span class="product-price">R75</span>
-    </div>
-    <img src="Phone Stand.jpeg" alt="Phone Stand" class="product-image" />
-  </div>
-
-  <!-- NEW: Bluetooth Earpiece -->
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">Bluetooth Earpiece</span>
-      <span class="product-price">R100</span>
-    </div>
-    <img src="Bluetooth Earpiece.jpeg" alt="Bluetooth Earpiece" class="product-image" />
-  </div>
-
-  <!-- NEW: 2GB RAM -->
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">2GB RAM</span>
-      <span class="product-price">R150</span>
-    </div>
-    <img src="2GB RAM.jpeg" alt="2GB RAM" class="product-image" />
-  </div>
+<!-- Bluetooth Speaker -->
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">Bluetooth Speaker</span>
+<span class="product-price">R175</span>
 </div>
-
+<img src="https://aivoice.technology/BT-Speaker2.jpeg" alt="Bluetooth Speaker" class="product-image" />
+</div>
+<!-- Mercedes Benz Tag Heuer watch -->
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">Mercedes Benz Tag Heuer Watch</span>
+<span class="product-price">R399</span>
+</div>
+<img src="https://aivoice.technology/Mercedes%20Benz%20Tag%20Heuer%20watch.jpeg" alt="Mercedes Benz Tag Heuer watch" class="product-image" />
+</div>
+<!-- Luminor Panarai automatic watch -->
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">Luminor Panarai Automatic Watch</span>
+<span class="product-price">R499</span>
+</div>
+<img src="https://aivoice.technology/Luminor%20Panarai%20automatic%20watch.jpeg" alt="Luminor Panarai automatic watch" class="product-image" />
+</div>
+<!-- Mini keyboard and mouse -->
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">Mini Keyboard and Mouse</span>
+<span class="product-price">R149</span>
+</div>
+<img src="https://aivoice.technology/Mini%20keyboard%20and%20mouse.jpeg" alt="Mini keyboard and mouse" class="product-image" />
+</div>
+<!-- BT Mini keyboard and mouse -->
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">BT Mini Keyboard and Mouse</span>
+<span class="product-price">R190</span>
+</div>
+<img src="https://aivoice.technology/BT%20Mini%20keyboard%20and%20mouse.jpg" alt="BT Mini keyboard and mouse" class="product-image" />
+</div>
+<!-- Laptop cooler fan -->
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">Laptop Cooler Fan</span>
+<span class="product-price">R40</span>
+</div>
+<img src="https://aivoice.technology/Laptop%20cooler%20fan.jpeg" alt="Laptop cooler fan" class="product-image" />
+</div>
+<!-- Binoculars -->
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">Binoculars</span>
+<span class="product-price">R100</span>
+</div>
+<img src="https://aivoice.technology/Binoculars.jpeg" alt="Binoculars" class="product-image" />
+</div>
+<!-- Phone Stand -->
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">Phone Stand</span>
+<span class="product-price">R75</span>
+</div>
+<img src="https://aivoice.technology/Phone%20Stand.jpeg" alt="Phone Stand" class="product-image" />
+</div>
+<!-- NEW: Bluetooth Earpiece -->
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">Bluetooth Earpiece</span>
+<span class="product-price">R100</span>
+</div>
+<img src="https://aivoice.technology/Bluetooth%20Earpiece.jpeg" alt="Bluetooth Earpiece" class="product-image" />
+</div>
+<!-- NEW: 2GB RAM -->
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">2GB RAM</span>
+<span class="product-price">R150</span>
+</div>
+<img src="https://aivoice.technology/2GB%20RAM.jpeg" alt="2GB RAM" class="product-image" />
+</div>
+</div>
 <!-- New Stock coming soon section -->
 <h2 class="section-title">New Stock coming soon!</h2>
 <div class="gallery">
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">Smartwatch</span>
-      <span class="product-price">R249</span>
-    </div>
-    <img src="Smartwatch 2.jpeg" alt="Smartwatch" class="product-image" />
-  </div>
-
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">12v USB Phone Charger</span>
-      <span class="product-price">R120</span>
-    </div>
-    <img src="12vDC Charger.jpeg" alt="12v USB phone charger" class="product-image" />
-  </div>
-
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">Fast Charging Phone Cable</span>
-      <span class="product-price">R75</span>
-    </div>
-    <img src="Fast charging cable.jpeg" alt="Fast charging phone cable" class="product-image" />
-  </div>
-
-  <div class="product-card">
-    <div class="product-info">
-      <span class="product-name">Foldable Glasses</span>
-      <span class="product-price">R150</span>
-    </div>
-    <img src="Foldable glasses.jpg" alt="Foldable glasses" class="product-image" />
-  </div>
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">Smartwatch</span>
+<span class="product-price">R249</span>
 </div>
-
+<img src="https://aivoice.technology/Smartwatch%202.jpeg" alt="Smartwatch" class="product-image" />
+</div>
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">12v USB Phone Charger</span>
+<span class="product-price">R120</span>
+</div>
+<img src="https://aivoice.technology/12vDC%20Charger.jpeg" alt="12v USB phone charger" class="product-image" />
+</div>
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">Fast Charging Phone Cable</span>
+<span class="product-price">R75</span>
+</div>
+<img src="https://aivoice.technology/Fast%20charging%20cable.jpeg" alt="Fast charging phone cable" class="product-image" />
+</div>
+<div class="product-card">
+<div class="product-info">
+<span class="product-name">Foldable Glasses</span>
+<span class="product-price">R150</span>
+</div>
+<img src="https://aivoice.technology/Foldable%20glasses.jpg" alt="Foldable glasses" class="product-image" />
+</div>
+</div>
 </body>
 </html>
