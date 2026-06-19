@@ -77,11 +77,22 @@ body {
   font-weight: 600;
   color: #4ade80;
 }
+  .old-price {
+  text-decoration: line-through;
+  margin-right: 6px;
+  opacity: 0.8;
+}
+
+.promo-price {
+  color: #fbbf24; /* amber/yellow promo color */
+  font-weight: 700;
+}
 </style>
 </head>
 <body>
 <h1 class="page-title">Gary's Mobile Tech Shop</h1>
 <p class="page-subtitle">WhatsApp me on 063 301 1254</p>
+<p class="page-subtitle">Offices in Northwold, Johannesburg</p>
 
 <!-- New Products section -->
 <h2 class="section-title">New Products</h2>
@@ -89,7 +100,10 @@ body {
   <div class="product-card">
     <div class="product-info">
       <span class="product-name">Powerbank</span>
-      <span class="product-price">R275</span>
+     <span class="product-price">
+  <span class="old-price">R275</span>
+  <span class="promo-price">On Promotion - R225
+</span>
     </div>
     <img src="https://aivoice.technology/Powerbank.JPG" alt="Powerbank" class="product-image" />
   </div>
