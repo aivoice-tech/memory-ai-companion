@@ -87,11 +87,34 @@ body {
   color: #fbbf24; /* amber/yellow promo color */
   font-weight: 700;
 }
+  .blink-subtitle {
+  animation: subtitleBlink 3s linear infinite;
+}
+
+/* slow blink with color changes */
+@keyframes subtitleBlink {
+  0% {
+    opacity: 1;
+    color: #ccc;
+  }
+  33% {
+    opacity: 0.3;
+    color: #4ade80; /* green accent */
+  }
+  66% {
+    opacity: 1;
+    color: #fbbf24; /* amber/yellow */
+  }
+  100% {
+    opacity: 0.4;
+    color: #ccc;
+  }
+}
 </style>
 </head>
 <body>
 <h1 class="page-title">Gary's Mobile Tech Shop</h1>
-<p class="page-subtitle">WhatsApp me on 063 301 1254</p>
+<p class="page-subtitle blink-subtitle">WhatsApp me on 063 301 1254</p>
 <p class="page-subtitle">Offices in Northwold, Johannesburg</p>
 
 <!-- New Products section -->
