@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Product Gallery</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #111;
+  color: #fff;
+}
+/* Page title */
+.page-title {
+  text-align: center;
+  font-size: 28px; /* adjust size as you like */
+  font-weight: 600;
+  padding: 20px 16px 4px; /* slightly reduced bottom padding */
+}
+
+/* Subtitle under page title */
+.page-subtitle {
+  text-align: center;
+  font-size: 16px;
+  padding: 0 16px 8px;
+  color: #ccc;
+}
+
+/* Section headings */
+.section-title {
+  max-width: 600px;
+  margin: 24px auto 8px;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 0 16px;
+  border-bottom: 2px solid #333;
+}
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 8px 0 32px; /* small gap below title, rest at bottom */
+}
+.product-card {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #333;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+.product-info {
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  border-bottom: 1px solid #222; /* clear break before image */
+  background: #050505;
+}
+.product-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.product-name {
+  font-weight: 500;
+}
+.product-price {
+  font-weight: 600;
+  color: #4ade80;
+}
+  .old-price {
+  text-decoration: line-through;
+  margin-right: 6px;
+  opacity: 0.8;
+}
+
+.promo-price {
+  color: #fbbf24; /* amber/yellow promo color */
+  font-weight: 700;
+}
+  .blink-subtitle {
+  animation: subtitleBlink 3s linear infinite;
+}
+
+/* slow blink with color changes */
+@keyframes subtitleBlink {
+  0% {
+    opacity: 1;
+    color: #ccc;
+  }
+  33% {
+    opacity: 0.3;
+    color: #4ade80; /* green accent */
+  }
+  66% {
+    opacity: 1;
+    color: #fbbf24; /* amber/yellow */
+  }
+  100% {
+    opacity: 0.4;
+    color: #ccc;
+  }
+}
+</style>
+</head>
+<body>
+<h1 class="page-title">Gary's Mobile Tech Shop</h1>
+<p class="page-subtitle blink-subtitle">Want it for less - make a bid for it!</p>
+<p class="page-subtitle">WhatsApp me on 063 301 1254</p>
+<p class="page-subtitle">Offices in Northwold, Johannesburg</p>
+<p class="page-subtitle">
+  Click <a href="#website-services" style="color: #4ade80; text-decoration: underline;">HERE</a> to see the latest Promotion
+</p>
+
+<!-- New Products section -->
+<h2 class="section-title">New Products</h2>
+<div class="gallery">
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Bluetooth Headphones</span>
+      <span class="product-price">R220</span>
+    </div>
+    <img src="https://aivoice.technology/Bluetooth-Headphones.jpeg" alt="Bluetooth Headphones" class="product-image" />
+  </div>
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Gaming Keyboard & Mouse</span>
+      <span class="product-price">R300</span>
+    </div>
+    <img src="https://aivoice.technology/Gaming-Keyboard-and-Mouse.jpeg" alt="Gaming Keyboard & Mouse" class="product-image" />
+  </div>
+</div>
+
+<!-- Pre-owned Products section -->
+<h2 class="section-title">Pre-owned Products</h2>
+<div class="gallery">
+  <!-- Bluetooth Speaker -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Bluetooth Speaker</span>
+      <span class="product-price">R180</span>
+    </div>
+    <img src="https://aivoice.technology/BT-Speaker2.jpeg" alt="Bluetooth Speaker" class="product-image" />
+  </div>
+  <!-- Mercedes Benz Tag Heuer watch -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Mercedes Benz Tag Heuer Watch</span>
+      <span class="product-price">R500</span>
+    </div>
+    <img src="https://aivoice.technology/Mercedes%20Benz%20Tag%20Heuer%20watch.jpeg" alt="Mercedes Benz Tag Heuer watch" class="product-image" />
+  </div>
+  <!-- Luminor Panerai automatic watch -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Luminor Panerai Automatic Watch</span>
+      <span class="product-price">R750</span>
+    </div>
+    <img src="https://aivoice.technology/Luminor%20Panarai%20automatic%20watch.jpeg" alt="Luminor Panarai automatic watch" class="product-image" />
+  </div>
+   <!-- Diva Watch -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Diva Watch</span>
+      <span class="product-price">R350</span>
+    </div>
+    <img src="https://aivoice.technology/Diva%20Watch.jpeg" alt="Diva watch" class="product-image" />
+  </div>
+ <!-- BT Mini keyboard and mouse -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Wireless mini Keyboard and Mouse</span>
+      <span class="product-price">R250</span>
+    </div>
+    <img src="https://aivoice.technology/BT%20Mini%20keyboard%20and%20mouse.jpg" alt="BT Mini keyboard and mouse" class="product-image" />
+  </div>
+  <!-- Laptop cooler fan -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Laptop Cooler Fan</span>
+      <span class="product-price">R50</span>
+    </div>
+    <img src="https://aivoice.technology/Laptop%20cooler%20fan.jpeg" alt="Laptop cooler fan" class="product-image" />
+  </div>
+  <!-- Binoculars -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Binoculars</span>
+      <span class="product-price">R200</span>
+    </div>
+    <img src="https://aivoice.technology/Binoculars.jpeg" alt="Binoculars" class="product-image" />
+  </div>
+  <!-- Bluetooth Earpiece -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Bluetooth Earpiece</span>
+      <span class="product-price">R120</span>
+    </div>
+    <img src="https://aivoice.technology/Bluetooth%20Earpiece.jpeg" alt="Bluetooth Earpiece" class="product-image" />
+  </div>
+  <!-- Milk Frother -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Rechargeable Milk Frother</span>
+      <span class="product-price">R250</span>
+    </div>
+    <img src="https://aivoice.technology/Milk%20Frother.jpeg" alt="Luminor Panarai automatic watch" class="product-image" />
+  </div>
+  <!-- 2GB RAM -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">2GB RAM</span>
+      <span class="product-price">R150</span>
+    </div>
+    <img src="https://aivoice.technology/2GB%20RAM.jpeg" alt="2GB RAM" class="product-image" />
+  </div>
+</div>
+<!-- New Stock coming soon section -->
+<h2 class="section-title">New Stock!</h2>
+<div class="gallery">
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Smartwatch</span>
+      <span class="product-price">R250</span>
+    </div>
+    <img src="https://aivoice.technology/Smartwatch%202.jpeg" alt="Smartwatch" class="product-image" />
+  </div>
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">12v USB Phone Charger</span>
+      <span class="product-price">R120</span>
+    </div>
+    <img src="https://aivoice.technology/12vDC%20Charger.jpeg" alt="12v USB phone charger" class="product-image" />
+  </div>
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Foldable Glasses</span>
+      <span class="product-price">R150</span>
+    </div>
+    <img src="https://aivoice.technology/Foldable%20glasses.jpg" alt="Foldable glasses" class="product-image" />
+  </div>
+
+  <!-- Coming soon: Fast charging cable 2 -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Fast Charging Cable 2</span>
+      <span class="product-price">R80</span>
+    </div>
+    <img src="Fast charging cable2.jpeg" alt="Fast charging cable 2" class="product-image" />
+  </div>
+
+  <!-- Coming soon: Fast charging cable 3 -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Fast Charging Cable 3</span>
+      <span class="product-price">R80</span>
+    </div>
+    <img src="Fast charging cable3.jpeg" alt="Fast charging cable 3" class="product-image" />
+  </div>
+
+  <!-- Coming soon: Glasses and Headset -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Glasses and Headset</span>
+      <span class="product-price">R280</span>
+    </div>
+    <img src="Glasses and Headset.jpeg" alt="Glasses and Headset" class="product-image" />
+  </div>
+  <!-- Coming soon: Wireless Headphones -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Wireless Headphones</span>
+      <span class="product-price">R250</span>
+    </div>
+    <img src="Wireless Headphones.jpg" alt="Wireless Headphones" class="product-image" />
+  </div>
+
+  <!-- Coming soon: Quartz Watch -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Quartz Watch</span>
+      <span class="product-price">R400</span>
+    </div>
+    <img src="Quartz Watch.jpg" alt="Quartz Watch" class="product-image" />
+  </div>
+   <!-- Coming soon: Car heater -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Car Heater</span>
+      <span class="product-price">R450</span>
+    </div>
+    <img src="Car heater.jpeg" alt="Car heater" class="product-image" />
+  </div>
+</div>
+<!-- Website and App Services section -->
+<h2 class="section-title" id="website-services">Website and App Services - on Promotion</h2>
+<div class="gallery">
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Cost for a basic website</span>
+      <span class="product-price">From R1500</span>
+    </div>
+    <div style="padding: 12px 16px; font-size: 15px; line-height: 1.5;">
+      <p>Your domain registration if required.</p>
+      <p>Website build – R1500 once off.</p>
+      <p>HOSTING - FREE!!!</p>
+    </div>
+     <div style="padding: 12px 16px; font-size: 15px; line-height: 1.5;">
+    <p>
+  <a href="https://aivoice.technology" style="color: yellow;">
+    About Me
+  </a>
+</p>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>
