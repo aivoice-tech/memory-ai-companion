@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en"><plasmo-csui id="plasmo-inspector"></plasmo-csui><head>
+<meta charset="UTF-8">
+<title>Product Gallery</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #111;
+  color: #fff;
+}
+/* Page title */
+.page-title {
+  text-align: center;
+  font-size: 28px; /* adjust size as you like */
+  font-weight: 600;
+  padding: 20px 16px 4px; /* slightly reduced bottom padding */
+}
+
+/* Subtitle under page title */
+.page-subtitle {
+  text-align: center;
+  font-size: 16px;
+  padding: 0 16px 8px;
+  color: #ccc;
+}
+
+/* Section headings */
+.section-title {
+  max-width: 600px;
+  margin: 24px auto 8px;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 0 16px;
+  border-bottom: 2px solid #333;
+}
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 8px 0 32px; /* small gap below title, rest at bottom */
+}
+.product-card {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #333;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+.product-info {
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  border-bottom: 1px solid #222; /* clear break before image */
+  background: #050505;
+}
+.product-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.product-name {
+  font-weight: 500;
+}
+.product-price {
+  font-weight: 600;
+  color: #4ade80;
+}
+  .old-price {
+  text-decoration: line-through;
+  margin-right: 6px;
+  opacity: 0.8;
+}
+
+.promo-price {
+  color: #fbbf24; /* amber/yellow promo color */
+  font-weight: 700;
+}
+  .blink-subtitle {
+  animation: subtitleBlink 3s linear infinite;
+}
+
+/* slow blink with color changes */
+@keyframes subtitleBlink {
+  0% {
+    opacity: 1;
+    color: #ccc;
+  }
+  33% {
+    opacity: 0.3;
+    color: #4ade80; /* green accent */
+  }
+  66% {
+    opacity: 1;
+    color: #fbbf24; /* amber/yellow */
+  }
+  100% {
+    opacity: 0.4;
+    color: #ccc;
+  }
+}
+</style>
+<style>.driver-active .driver-overlay,.driver-active *{pointer-events:none}.driver-active .driver-active-element,.driver-active .driver-active-element *,.driver-popover,.driver-popover *{pointer-events:auto}@keyframes animate-fade-in{0%{opacity:0}to{opacity:1}}.driver-fade .driver-overlay{animation:animate-fade-in .2s ease-in-out}.driver-fade .driver-popover{animation:animate-fade-in .2s}.driver-popover{all:unset;box-sizing:border-box;color:#2d2d2d;margin:0;padding:15px;border-radius:5px;min-width:250px;max-width:300px;box-shadow:0 1px 10px rgba(0,0,0,.4);z-index:1000000000;position:fixed;top:0;right:0;background-color:#fff}.driver-popover *{font-family:Helvetica Neue,Inter,ui-sans-serif,"Apple Color Emoji",Helvetica,Arial,sans-serif}.driver-popover-title{font:19px/normal sans-serif;font-weight:700;display:block;position:relative;line-height:1.5;zoom:1;margin:0}.driver-popover-close-btn{all:unset;position:absolute;top:0;right:0;width:32px;height:28px;cursor:pointer;font-size:18px;font-weight:500;color:#d2d2d2;z-index:1;text-align:center;transition:color;transition-duration:.2s}.driver-popover-close-btn:hover,.driver-popover-close-btn:focus{color:#2d2d2d}.driver-popover-title[style*=block]+.driver-popover-description{margin-top:5px}.driver-popover-description{margin-bottom:0;font:14px/normal sans-serif;line-height:1.5;font-weight:400;zoom:1}.driver-popover-footer{margin-top:15px;text-align:right;zoom:1;display:flex;align-items:center;justify-content:space-between}.driver-popover-progress-text{font-size:13px;font-weight:400;color:#727272;zoom:1}.driver-popover-footer button{all:unset;display:inline-block;box-sizing:border-box;padding:3px 7px;text-decoration:none;text-shadow:1px 1px 0 #fff;background-color:#fff;color:#2d2d2d;font:12px/normal sans-serif;cursor:pointer;outline:0;zoom:1;line-height:1.3;border:1px solid #ccc;border-radius:3px}.driver-popover-footer .driver-popover-btn-disabled{opacity:.5;pointer-events:none}:not(body):has(>.driver-active-element){overflow:hidden !important}.driver-no-interaction,.driver-no-interaction *{pointer-events:none !important}.driver-popover-footer button:hover,.driver-popover-footer button:focus{background-color:#f7f7f7}.driver-popover-navigation-btns{display:flex;flex-grow:1;justify-content:flex-end}.driver-popover-navigation-btns button+button{margin-left:4px}.driver-popover-arrow{content:"";position:absolute;border:5px solid #fff}.driver-popover-arrow-side-over{display:none}.driver-popover-arrow-side-left{left:100%;border-right-color:transparent;border-bottom-color:transparent;border-top-color:transparent}.driver-popover-arrow-side-right{right:100%;border-left-color:transparent;border-bottom-color:transparent;border-top-color:transparent}.driver-popover-arrow-side-top{top:100%;border-right-color:transparent;border-bottom-color:transparent;border-left-color:transparent}.driver-popover-arrow-side-bottom{bottom:100%;border-left-color:transparent;border-top-color:transparent;border-right-color:transparent}.driver-popover-arrow-side-center{display:none}.driver-popover-arrow-side-left.driver-popover-arrow-align-start,.driver-popover-arrow-side-right.driver-popover-arrow-align-start{top:15px}.driver-popover-arrow-side-top.driver-popover-arrow-align-start,.driver-popover-arrow-side-bottom.driver-popover-arrow-align-start{left:15px}.driver-popover-arrow-align-end.driver-popover-arrow-side-left,.driver-popover-arrow-align-end.driver-popover-arrow-side-right{bottom:15px}.driver-popover-arrow-side-top.driver-popover-arrow-align-end,.driver-popover-arrow-side-bottom.driver-popover-arrow-align-end{right:15px}.driver-popover-arrow-side-left.driver-popover-arrow-align-center,.driver-popover-arrow-side-right.driver-popover-arrow-align-center{top:50%;margin-top:-5px}.driver-popover-arrow-side-top.driver-popover-arrow-align-center,.driver-popover-arrow-side-bottom.driver-popover-arrow-align-center{left:50%;margin-left:-5px}.driver-popover-arrow-none{display:none}</style><style></style><script src="chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/js/recordConsoleEvents.js"></script></head>
+<body cz-shortcut-listen="true">
+<h1 class="page-title">Gary's Mobile Tech Shop</h1>
+<p class="page-subtitle blink-subtitle">Want it for less - make a bid for it!</p>
+<p class="page-subtitle">WhatsApp me on 063 301 1254</p>
+<p class="page-subtitle">Offices in Northwold, Johannesburg</p>
+<p class="page-subtitle">
+  Click <a href="#website-services" style="color: #4ade80; text-decoration: underline;">HERE</a> to see the latest Promotion
+</p>
+
+<!-- New Products section -->
+
+
+
+<!-- Pre-owned Products section -->
+<h2 class="section-title">Pre-owned Products</h2>
+<div class="gallery">
+  <!-- Bluetooth Speaker -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Bluetooth Speaker</span>
+      <span class="product-price">R180</span>
+    </div>
+    <img src="https://aivoice.technology/BT-Speaker2.jpeg" alt="Bluetooth Speaker" class="product-image">
+  </div>
+  <!-- Mercedes Benz Tag Heuer watch -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Mercedes Benz Tag Heuer Watch</span>
+      <span class="product-price">R500</span>
+    </div>
+    <img src="https://aivoice.technology/Mercedes%20Benz%20Tag%20Heuer%20watch.jpeg" alt="Mercedes Benz Tag Heuer watch" class="product-image">
+  </div>
+  <!-- Luminor Panerai automatic watch -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Luminor Panerai Automatic Watch</span>
+      <span class="product-price">R750</span>
+    </div>
+    <video src="https://aivoice.technology/Panerai.mp4" class="product-image" controls="">
+  Your browser does not support the video tag.
+</video>
+  </div>
+   <!-- Diva Watch -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Diva Watch</span>
+      <span class="product-price">R350</span>
+    </div>
+    <img src="https://aivoice.technology/Diva%20Watch.jpeg" alt="Diva watch" class="product-image">
+  </div>
+ <!-- BT Mini keyboard and mouse -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Wireless mini Keyboard and Mouse</span>
+      <span class="product-price">R250</span>
+    </div>
+    <img src="https://aivoice.technology/BT%20Mini%20keyboard%20and%20mouse.jpg" alt="BT Mini keyboard and mouse" class="product-image">
+  </div>
+  <!-- Laptop cooler fan -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Laptop Cooler Fan</span>
+      <span class="product-price">R50</span>
+    </div>
+    <img src="https://aivoice.technology/Laptop%20cooler%20fan.jpeg" alt="Laptop cooler fan" class="product-image">
+  </div>
+  <!-- Binoculars -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Binoculars</span>
+      <span class="product-price">R200</span>
+    </div>
+    <img src="https://aivoice.technology/Binoculars.jpeg" alt="Binoculars" class="product-image">
+  </div>
+  <!-- Bluetooth Earpiece -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Bluetooth Earpiece</span>
+      <span class="product-price">R120</span>
+    </div>
+    <img src="https://aivoice.technology/Bluetooth%20Earpiece.jpeg" alt="Bluetooth Earpiece" class="product-image">
+  </div>
+  <!-- Milk Frother -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Rechargeable Milk Frother</span>
+      <span class="product-price">R250</span>
+    </div>
+    <img src="https://aivoice.technology/Milk%20Frother.jpeg" alt="Luminor Panarai automatic watch" class="product-image">
+  </div>
+  <!-- 2GB RAM -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">2GB RAM</span>
+      <span class="product-price">R150</span>
+    </div>
+    <img src="https://aivoice.technology/2GB%20RAM.jpeg" alt="2GB RAM" class="product-image">
+  </div>
+</div>
+<!-- New Stock coming soon section -->
+<h2 class="section-title">New Products</h2>
+<div class="gallery">
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Smartwatch</span>
+      <span class="product-price">R250</span>
+    </div>
+    <img src="https://aivoice.technology/Smartwatch%202.jpeg" alt="Smartwatch" class="product-image">
+  </div>
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">12v USB Phone Charger</span>
+      <span class="product-price">R120</span>
+    </div>
+    <img src="https://aivoice.technology/12vDC%20Charger.jpeg" alt="12v USB phone charger" class="product-image">
+  </div>
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Foldable Glasses</span>
+      <span class="product-price">R150</span>
+    </div>
+    <img src="https://aivoice.technology/Foldable%20glasses.jpg" alt="Foldable glasses" class="product-image">
+  </div>
+
+  <!-- Coming soon: Fast charging cable 2 -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Fast Charging Cable 2</span>
+      <span class="product-price">R80</span>
+    </div>
+    <img src="Fast charging cable2.jpeg" alt="Fast charging cable 2" class="product-image">
+  </div>
+
+  <!-- Coming soon: Fast charging cable 3 -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Fast Charging Cable 3</span>
+      <span class="product-price">R80</span>
+    </div>
+    <img src="Fast charging cable3.jpeg" alt="Fast charging cable 3" class="product-image">
+  </div>
+
+  <!-- Coming soon: Glasses and Headset -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Glasses and Headset</span>
+      <span class="product-price">R280</span>
+    </div>
+    <img src="Glasses and Headset.jpeg" alt="Glasses and Headset" class="product-image">
+  </div>
+  <!-- Coming soon: Wireless Headphones -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Wireless Headphones</span>
+      <span class="product-price">R250</span>
+    </div>
+    <img src="Wireless Headphones.jpg" alt="Wireless Headphones" class="product-image">
+  </div>
+
+  <!-- Coming soon: Quartz Watch -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Quartz Watch</span>
+      <span class="product-price">R400</span>
+    </div>
+    <img src="Quartz Watch.jpg" alt="Quartz Watch" class="product-image">
+  </div>
+   <!-- Coming soon: Car heater -->
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Car Heater</span>
+      <span class="product-price">R450</span>
+    </div>
+    <img src="Car heater.jpeg" alt="Car heater" class="product-image">
+<div class="gallery">
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Bluetooth Headphones</span>
+      <span class="product-price">R220</span>
+    </div>
+    <img src="https://aivoice.technology/Bluetooth-Headphones.jpeg" alt="Bluetooth Headphones" class="product-image">
+  </div>
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Gaming Keyboard &amp; Mouse</span>
+      <span class="product-price">R300</span>
+    </div>
+    <img src="https://aivoice.technology/Gaming-Keyboard-and-Mouse.jpeg" alt="Gaming Keyboard &amp; Mouse" class="product-image">
+  </div>
+</div>
+  </div>
+</div>
+<!-- Website and App Services section -->
+<h2 class="section-title" id="website-services">Website and App Services - on Promotion</h2>
+<div class="gallery">
+  <div class="product-card">
+    <div class="product-info">
+      <span class="product-name">Cost for a basic website</span>
+      <span class="product-price">From R1500</span>
+    </div>
+    <div style="padding: 12px 16px; font-size: 15px; line-height: 1.5;">
+      <p>Your domain registration if required.</p>
+      <p>Website build – R1500 once off.</p>
+      <p>HOSTING - FREE!!!</p>
+    </div>
+     <div style="padding: 12px 16px; font-size: 15px; line-height: 1.5;">
+    <p>
+  <a href="https://aivoice.technology" style="color: yellow;">
+    About Me
+  </a>
+</p>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="screenity-ui"><div class="screenity-shadow-dom"><div><div class="screenity-scrollbar"></div><div class="screenity-scrollbar"></div></div><style type="text/css">
+			#screenity-ui, #screenity-ui div {
+				background-color: unset;
+				padding: unset;
+				width: unset;
+				box-shadow: unset;
+				display: unset;
+				margin: unset;
+				border-radius: unset;
+			}
+			.screenity-outline {
+				position: absolute;
+				z-index: 99999999999;
+				border: 2px solid #3080F8;
+				outline-offset: -2px;
+				pointer-events: none;
+				border-radius: 5px!important;
+			}
+		.screenity-blur {
+			filter: blur(10px)!important;
+		}
+			.screenity-shadow-dom * {
+				transition: unset;
+			}
+			.screenity-shadow-dom .TooltipContent {
+  border-radius: 30px!important;
+	background-color: #29292F!important;
+  padding: 10px 15px!important;
+  font-size: 12px;
+	margin-bottom: 10px!important;
+	bottom: 100px;
+  line-height: 1;
+	font-family: 'Satoshi-Medium', sans-serif;
+	z-index: 99999999!important;
+  color: #FFF;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px!important;
+  user-select: none;
+	transition: opacity 0.3 ease-in-out;
+  will-change: transform, opacity;
+	animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.screenity-shadow-dom .hide-tooltip {
+	display: none!important;
+}
+
+.screenity-shadow-dom .tooltip-tall {
+	margin-bottom: 20px;
+}
+
+.screenity-shadow-dom .tooltip-small {
+	margin-bottom: 5px;
+}
+
+.screenity-shadow-dom .TooltipContent[data-state='delayed-open'][data-side='top'] {
+	animation-name: screenity-slideDownAndFade;
+}
+.screenity-shadow-dom .TooltipContent[data-state='delayed-open'][data-side='right'] {
+  animation-name: screenity-slideLeftAndFade;
+}
+.screenity-shadow-dom.TooltipContent[data-state='delayed-open'][data-side='bottom'] {
+  animation-name: screenity-slideUpAndFade;
+}
+.screenity-shadow-dom.TooltipContent[data-state='delayed-open'][data-side='left'] {
+  animation-name: screenity-slideRightAndFade;
+}
+
+@keyframes screenity-slideUpAndFade {
+  from { opacity: 0; transform: translateY(2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes screenity-slideRightAndFade {
+  from { opacity: 0; transform: translateX(-2px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes screenity-slideDownAndFade {
+  from { opacity: 0; transform: translateY(-2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes screenity-slideLeftAndFade {
+  from { opacity: 0; transform: translateX(2px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+#screenity-ui [data-radix-popper-content-wrapper] { z-index: 999999999999!important; }
+
+.screenity-shadow-dom .CanvasContainer {
+	position: fixed;
+	pointer-events: all!important;
+	top: 0px!important;
+	left: 0px!important;
+	z-index: 99999999999!important;
+}
+.screenity-shadow-dom .canvas {
+	position: fixed;
+	top: 0px!important;
+	left: 0px!important;
+	z-index: 99999999999!important;
+	background: transparent!important;
+}
+.screenity-shadow-dom .canvas-container {
+	top: 0px!important;
+	left: 0px!important;
+	z-index: 99999999999;
+	position: fixed!important;
+	background: transparent!important;
+}
+
+.ScreenityDropdownMenuContent {
+	z-index: 99999999999!important;
+  min-width: 200px;
+  background-color: white;
+  margin-top: 4px;
+  margin-right: 8px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-radius: 15px;
+  font-family: 'Satoshi-Medium', sans-serif;
+  color: #29292F;
+  box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35),
+    0px 10px 20px -15px rgba(22, 23, 24, 0.2);
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+.ScreenityDropdownMenuContent[data-side="top"] {
+  animation-name: screenity-slideDownAndFade;
+}
+.ScreenityDropdownMenuContent[data-side="right"] {
+  animation-name: screenity-slideLeftAndFade;
+}
+.ScreenityDropdownMenuContent[data-side="bottom"] {
+  animation-name: screenity-slideUpAndFade;
+}
+.ScreenityDropdownMenuContent[data-side="left"] {
+  animation-name: screenity-slideRightAndFade;
+}
+.ScreenityItemIndicator {
+  position: absolute;
+  right: 12px;
+  width: 18px;
+  height: 18px;
+  background: #3080F8;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ScreenityDropdownMenuItem,
+.ScreenityDropdownMenuRadioItem {
+  font-size: 14px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 5px;
+  position: relative;
+  padding-left: 22px;
+  padding-right: 22px;
+  user-select: none;
+  outline: none;
+}
+.ScreenityDropdownMenuItem:hover {
+    background-color: #F6F7FB !important;
+    cursor: pointer;
+}
+.ScreenityDropdownMenuItem[data-disabled] {
+  color: #6E7684 !important;
+  cursor: not-allowed;
+  background-color: #F6F7FB !important;
+}
+
+</style></div></div><div id="give-freely-root-mbnbehikldjhnfehhnaidhjhoofhpehk" class="give-freely-root" data-extension-id="mbnbehikldjhnfehhnaidhjhoofhpehk" data-extension-name="CSS Peeper" style="display: block;"></div></body></html>
