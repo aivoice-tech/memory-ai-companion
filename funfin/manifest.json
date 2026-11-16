@@ -1,0 +1,25 @@
+{
+  "short_name": "SavvyFin",
+  "name": "SavvyFin AI",
+  "description": "Track income, expenses and savings goals with budgeting insights",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0b1224",
+  "background_color": "#0b1224"
+}

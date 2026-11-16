@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1224" />
+  <meta name="description" content="Track income, expenses & goals with premium AI insights" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icon2.png" />
+  <title>SavvyFin AI – Premium MVP</title>
+  <style>
+    :root{
+      --emerald:#50C878; /* refined emerald */
+      --gold:#FFD700;    /* premium gold */
+      --navy:#001F3F;    /* deep navy for text */
+      --bg:#0b1224;      /* dark background */
+      --card:#0f1730;    /* card surface */
+      --muted:#93a3b8;   /* muted text */
+      --success:#4ade80;
+      --danger:#f43f5e;
+      --shadow:0 10px 25px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color:#e6edf6; background: radial-gradient(1200px 600px at 20% -10%, rgba(80,200,120,.25), transparent 60%),
+                      radial-gradient(1000px 500px at 120% 0%, rgba(255,215,0,.2), transparent 60%),
+                      var(--bg);
+      letter-spacing:.2px;
+    }
+    a{color:var(--gold)}
+    h1,h2,h3{margin:0 0 10px}
+    .container{max-width:1200px; margin:0 auto; padding:24px}
+
+    /* Top hero */
+    .hero{
+      border-radius:var(--radius);
+      padding:28px; margin:16px 0 24px; position:relative; overflow:hidden;
+      background: linear-gradient(135deg, rgba(80,200,120,.18), rgba(255,215,0,.18));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+    }
+    .hero:before{
+      content:""; position:absolute; inset:-2px; border-radius:calc(var(--radius) + 2px);
+      padding:2px; background: linear-gradient(135deg, var(--emerald), var(--gold)); -webkit-mask:
+      linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask:
+      linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+    }
+    .hero-title{font-size:clamp(20px, 2.2vw, 28px); color:#fff}
+    .hero-sub{color:var(--muted)}
+    .hero-cta{margin-top:12px}
+    .btn{
+      appearance:none; border:none; cursor:pointer; border-radius:14px; padding:12px 16px; font-weight:600;
+      box-shadow:var(--shadow); transition:.25s transform,.25s box-shadow, .25s background;
+    }
+    .btn-gold{background:var(--gold); color:var(--navy)}
+    .btn-gold:hover{transform:translateY(-1px)}
+    .btn-emerald{background:var(--emerald); color:#03131d}
+    .btn-outline{background:transparent; border:1px solid rgba(255,255,255,.2); color:#fff}
+
+    /* Grid layout */
+    .grid{display:grid; gap:16px}
+    .grid-3{grid-template-columns:repeat(3, minmax(0, 1fr))}
+    .grid-2{grid-template-columns:repeat(2, minmax(0, 1fr))}
+    @media (max-width:1000px){.grid-3{grid-template-columns:repeat(2, 1fr)}}
+    @media (max-width:720px){.grid-3,.grid-2{grid-template-columns:1fr}}
+
+    /* Cards */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow);
+      position:relative; overflow:hidden}
+    .card:hover{transform:translateY(-1px)}
+    .card h3{font-size:16px}
+    .muted{color:var(--muted)}
+
+    /* Progress bars */
+    .progress{height:10px; background:rgba(255,255,255,.08); border-radius:999px; overflow:hidden; position:relative}
+    .progress > span{display:block; height:100%; width:0; border-radius:999px;
+      background: linear-gradient(90deg, var(--emerald), var(--gold));
+      transition: width 900ms ease-in-out}
+
+    /* Urgent shimmer/pulse */
+    @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(244,63,94,.35)}50%{box-shadow:0 0 0 12px rgba(244,63,94,0)}}
+    .urgent{animation:pulse 1.8s ease-in-out infinite}
+    .urgent .progress > span{background: linear-gradient(90deg, #ff7b7b, #f43f5e, #ffd1d1);
+      background-size:200% 100%; animation: shimmer 1.8s linear infinite}
+
+    /* Section headings */
+    .section-head{display:flex; align-items:center; justify-content:space-between; margin:18px 0 10px}
+
+    /* Lists */
+    .list{display:flex; flex-direction:column; gap:10px}
+
+    /* Forms */
+    .row{display:grid; grid-template-columns:2fr 1fr 1fr; gap:10px}
+    .row-4{
+  display:grid;
+  grid-template-columns:1.3fr 1fr 1fr 1fr;
+  gap:10px;
+}
+    @media (max-width:680px){.row,.row-4{grid-template-columns:1fr}}
+    input, select{width:100%; background:#0d162f; color:#e6edf6; border:1px solid rgba(255,255,255,.12);
+      border-radius:12px; padding:10px 12px; outline:none}
+
+    /* Totals badge */
+    .badge{display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+      border-radius:999px; padding:6px 10px; font-size:13px}
+
+    /* Welcome splash */
+    .splash{position:fixed; inset:0; background:radial-gradient(800px 400px at 20% 0%, rgba(80,200,120,.18), transparent 50%),
+                                  radial-gradient(800px 400px at 80% 100%, rgba(255,215,0,.18), transparent 50%), var(--bg);
+      display:flex; align-items:center; justify-content:center; z-index:9999; pointer-events:none}
+    .splash-inner{pointer-events:auto; text-align:center; padding:28px 24px; border-radius:22px; width:min(560px, 92vw);
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow)}
+    .splash-title{font-size:clamp(22px, 2.8vw, 34px); margin-bottom:8px}
+    .splash-glow{color:var(--gold); text-shadow:0 0 12px rgba(255,215,0,.5)}
+    .fade-in{animation:fadeIn .7s ease both}
+    .slide-up{animation:slideUp .7s ease .15s both}
+    @keyframes fadeIn{from{opacity:0; transform:translateY(4px)}to{opacity:1; transform:none}}
+    @keyframes slideUp{from{opacity:0; transform:translateY(12px)}to{opacity:1; transform:none}}
+    .splash.hide{animation:fadeOut .6s ease forwards}
+    @keyframes fadeOut{to{opacity:0; transform:scale(.98)} }
+
+    /* Onboarding modal */
+    .modal{position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:9998}
+    .modal.active{display:flex}
+    .modal-backdrop{position:absolute; inset:0; background:rgba(0,0,0,.55); backdrop-filter: blur(2px)}
+    .modal-content{position:relative; width:min(680px, 92vw); border-radius:24px; padding:20px; background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.12); box-shadow:var(--shadow)}
+    .user-types{display:grid; gap:12px; grid-template-columns:repeat(4, 1fr)}
+    @media (max-width:720px){.user-types{grid-template-columns:repeat(2, 1fr)}}
+    .type-card{padding:14px; border-radius:16px; background:#0d162f; border:1px solid rgba(255,255,255,.1); cursor:pointer; text-align:center; transition:.22s transform, .22s border-color}
+    .type-card:hover{transform:translateY(-2px); border-color:var(--gold)}
+    .type-card.active{outline:2px solid var(--gold)}
+
+    /* Collapsible */
+    details{background:#0d162f; border:1px solid rgba(255,255,255,.1); border-radius:14px; padding:8px 10px}
+    summary{cursor:pointer; list-style:none}
+    summary::-webkit-details-marker{display:none}
+
+    /* Small helper */
+    .right{margin-left:auto}
+    .space{height:6px}
+  </style>
+</head>
+<body>
+  <!-- Welcome Splash -->
+  <div id="splash" class="splash">
+    <div class="splash-inner fade-in">
+      <div class="splash-title">Welcome back, <span id="userNameSplash" class="splash-glow">Saver</span>! ✨</div>
+      <div class="muted slide-up">Let's make your savings smarter today.</div>
+    </div>
+  </div>
+
+  <!-- Onboarding: user type & name -->
+  <div id="onboarding" class="modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <h2 style="margin-bottom:6px">Tell us about you</h2>
+      <p class="muted" style="margin-top:0">Pick your profile and set your display name for tailored insights.</p>
+      <div class="user-types" id="userTypeGrid">
+        <div class="type-card" data-type="student">🎓 Student</div>
+        <div class="type-card" data-type="professional">💼 Professional</div>
+        <div class="type-card" data-type="freelancer">🧑‍💻 Freelancer</div>
+        <div class="type-card" data-type="other">✨ Other</div>
+      </div>
+      <div class="space"></div>
+      <div class="row">
+        <input id="displayName" placeholder="Your name (optional)" />
+        <button id="saveOnboarding" class="btn btn-gold">Save Profile</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Hero / CTA -->
+    <div class="hero">
+      <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap">
+        <div>
+          <div class="hero-title">SavvyFin AI</div>
+          <div class="hero-sub">Track income, expenses & goals with premium AI insights.</div>
+        </div>
+        <button id="runAI" class="btn btn-gold right">Refresh Budget Tips</button>
+      </div>
+    </div>
+
+    <!-- Income Section -->
+    <div class="section">
+      <div class="section-head">
+        <h2>Income</h2>
+        <span class="badge">Total Monthly: <strong id="totalIncome">$0</strong></span>
+      </div>
+      <div class="card">
+        <div class="row-4">
+          <input id="incomeName" placeholder="Source (e.g., Salary)"/>
+          <input id="incomeAmount" type="number" step="0.01" placeholder="Amount"/>
+          <select id="incomeCadence">
+            <option value="monthly" selected>Monthly</option>
+            <option value="weekly">Weekly</option>
+          </select>
+          <button id="addIncome" class="btn btn-emerald">Add Income</button>
+        </div>
+      </div>
+      <div id="incomeList" class="grid grid-3" style="margin-top:12px"></div>
+    </div>
+
+    <!-- Expenses Section -->
+    <div class="section">
+      <div class="section-head">
+        <h2>Expenses</h2>
+        <span class="badge">Monthly Total: <strong id="totalExpenses">$0</strong></span>
+      </div>
+      <div class="card">
+        <div class="row-4">
+          <input id="expenseName" placeholder="Category (e.g., Groceries)"/>
+          <input id="expenseAmount" type="number" step="0.01" placeholder="Monthly Amount"/>
+          <select id="expenseType">
+            <option value="recurring" selected>Recurring</option>
+            <option value="one-time">One-time</option>
+          </select>
+          <button id="addExpense" class="btn btn-emerald">Add Expense</button>
+        </div>
+      </div>
+      <div id="expenseList" class="grid grid-3" style="margin-top:12px"></div>
+    </div>
+
+    <!-- Goals Section -->
+    <div class="section">
+      <div class="section-head">
+        <h2>Goals</h2>
+        <span class="badge">Total Saved: <strong id="totalSaved">$0</strong></span>
+      </div>
+      <div class="card">
+        <div class="row-4">
+          <input id="goalName" placeholder="Goal (e.g., Emergency Fund)"/>
+          <input id="goalTarget" type="number" step="0.01" placeholder="Target Amount"/>
+          <input id="goalSaved" type="number" step="0.01" placeholder="Saved Amount"/>
+          <button id="addGoal" class="btn btn-emerald">Add Goal</button>
+        </div>
+      </div>
+
+      <div id="goals-container" class="grid grid-3" style="margin-top:12px"></div>
+
+      <div class="card" style="margin-top:12px">
+        <details>
+          <summary><strong>Budget Tips</strong> — Rule-based demo tips; no live AI connection</summary>
+          <div id="aiTips" style="margin-top:10px" class="list"></div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /*********************
+     * Simple Local Store *
+     *********************/
+    const store = {
+      read(){
+        try{ return JSON.parse(localStorage.getItem('savvyfin')||'{}') }catch{ return {} }
+      },
+      write(data){ localStorage.setItem('savvyfin', JSON.stringify(data)) }
+    }
+
+    const state = Object.assign({
+      profile:{ type:null, name:null },
+      incomes:[], // {id, name, amount, cadence}
+      expenses:[], // {id, name, amount, kind}
+      goals:[],   // {id, name, target, saved}
+      ai:{ tips:[] }
+    }, store.read())
+
+    // Helper to format money
+    const fmt = n => `$${Number(n||0).toLocaleString(undefined,{maximumFractionDigits:2})}`
+    const uid = () => Math.random().toString(36).slice(2,9)
+function escapeHTML(value) {
+  return String(value ?? '').replace(/[&<>"']/g, character => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  })[character]);
+}
+
+    /*********************
+     * Welcome / Onboard *
+     *********************/
+    const splash = document.getElementById('splash')
+    const onboarding = document.getElementById('onboarding')
+    const userNameSplash = document.getElementById('userNameSplash')
+
+    function showSplash(){
+      userNameSplash.textContent = state.profile?.name || 'Saver'
+      splash.classList.remove('hide')
+      setTimeout(()=> splash.classList.add('hide'), 2000) // auto-dismiss
+      setTimeout(()=> { splash.style.display='none'; maybeShowOnboarding() }, 2600)
+    }
+
+    function maybeShowOnboarding(){
+      if(!state.profile?.type){
+        onboarding.classList.add('active')
+      }
+    }
+
+    // Onboarding interactions
+    document.getElementById('userTypeGrid').addEventListener('click', (e)=>{
+      const card = e.target.closest('.type-card'); if(!card) return
+      document.querySelectorAll('.type-card').forEach(el=> el.classList.remove('active'))
+      card.classList.add('active')
+      state.profile.type = card.dataset.type
+    })
+    document.getElementById('saveOnboarding').addEventListener('click', ()=>{
+      const name = document.getElementById('displayName').value.trim()
+      if(name) state.profile.name = name
+      store.write(state)
+      onboarding.classList.remove('active')
+      document.getElementById('userNameSplash').textContent = state.profile?.name || 'Saver'
+    })
+
+    /*********************
+     * Render Helpers     *
+     *********************/
+    function render(){
+      renderIncomes();
+      renderExpenses();
+      renderGoals();
+      store.write(state)
+    }
+
+    /*********** Income ***********/
+    function monthlyFrom(amount, cadence){
+      amount = Number(amount||0)
+      return cadence === 'weekly' ? amount * 4.33 : amount
+    }
+
+    function renderIncomes(){
+      const wrap = document.getElementById('incomeList'); wrap.innerHTML = ''
+      let total = 0
+      state.incomes.forEach(src=>{
+        total += monthlyFrom(src.amount, src.cadence)
+        const card = document.createElement('div'); card.className='card'
+        card.innerHTML = `
+          <h3>${src.name}</h3>
+          <div class="muted">${src.cadence === 'weekly' ? fmt(src.amount) + '/wk' : fmt(src.amount) + '/mo'}</div>
+          <div class="section-head" style="margin-top:10px">
+            <span class="badge">Monthly eqv: <strong>${fmt(monthlyFrom(src.amount, src.cadence))}</strong></span>
+            <button class="btn btn-outline" data-del="${src.id}">Remove</button>
+          </div>
+        `
+        wrap.appendChild(card)
+      })
+      document.getElementById('totalIncome').textContent = fmt(total)
+      // Simple animated number flair (optional)
+    }
+
+    document.getElementById('addIncome').addEventListener('click', ()=>{
+      const name = document.getElementById('incomeName').value.trim()
+      const amount = parseFloat(document.getElementById('incomeAmount').value)
+      const cadence = document.getElementById('incomeCadence').value
+      if(!name || !amount) return
+      state.incomes.push({id:uid(), name, amount, cadence})
+      document.getElementById('incomeName').value=''; document.getElementById('incomeAmount').value=''
+      render();
+      runInsights();
+    })
+    document.getElementById('incomeList').addEventListener('click', (e)=>{
+      const id = e.target.getAttribute('data-del'); if(!id) return
+      state.incomes = state.incomes.filter(x=> x.id!==id); render(); runInsights();
+    })
+
+    /*********** Expenses ***********/
+    function renderExpenses(){
+      const wrap = document.getElementById('expenseList'); wrap.innerHTML = ''
+      let total = 0
+      state.expenses.forEach(ex=>{
+        total += Number(ex.amount||0)
+        const card = document.createElement('div'); card.className='card'
+        card.innerHTML = `
+          <h3>${escapeHTML(ex.name)}</h3>
+          <div class="muted">
+  ${fmt(ex.amount)} • ${ex.kind === 'one-time'
+    ? 'One-time — included in this monthly budget'
+    : 'Recurring monthly'}
+</div>
+          <div class="section-head" style="margin-top:10px">
+            <span class="badge">Share: <strong>${shareStr(ex.amount)}</strong></span>
+            <button class="btn btn-outline" data-del="${ex.id}">Remove</button>
+          </div>
+        `
+        wrap.appendChild(card)
+      })
+      document.getElementById('totalExpenses').textContent = fmt(total)
+    }
+
+    function shareStr(amount){
+      const inc = Number(document.getElementById('totalIncome').textContent.replace(/[$,]/g,'')||0)
+      const share = inc? (Number(amount)/inc*100):0
+      return `${share.toFixed(1)}%`
+    }
+
+    document.getElementById('addExpense').addEventListener('click', ()=>{
+      const name = document.getElementById('expenseName').value.trim()
+      const amount = parseFloat(document.getElementById('expenseAmount').value)
+      const kind = document.getElementById('expenseType').value
+      if (!name || !Number.isFinite(amount) || amount <= 0) {
+  alert('Enter a name and an amount greater than zero.');
+  return;
+}
+      state.expenses.push({id:uid(), name, amount, kind})
+      document.getElementById('expenseName').value=''; document.getElementById('expenseAmount').value=''
+      render();
+      runInsights();
+    })
+    document.getElementById('expenseList').addEventListener('click', (e)=>{
+      const id = e.target.getAttribute('data-del'); if(!id) return
+      state.expenses = state.expenses.filter(x=> x.id!==id); render(); runInsights();
+    })
+
+    /*********** Goals ***********/
+    function renderGoals(){
+      const wrap = document.getElementById('goals-container'); wrap.innerHTML = ''
+      let totalSaved = 0
+      state.goals.forEach(goal=>{
+        totalSaved += Number(goal.saved||0)
+        const pct = Math.max(0, Math.min(100, (Number(goal.saved||0)/Number(goal.target||1))*100))
+        const card = document.createElement('div'); card.className='card swipe-card'
+        card.innerHTML = `
+          <h3>${escapeHTML(goal.name)}</h3>	
+          <div class="muted">Target: <strong>${fmt(goal.target)}</strong> • Saved: <strong>${fmt(goal.saved)}</strong></div>
+          <div class="progress" style="margin:10px 0 6px"><span style="width:${pct}%"></span></div>
+          <div style="display:flex; gap:8px; align-items:center">
+            <input data-edit-saved="${goal.id}" type="number" placeholder="Amount to add" style="max-width:160px" />
+            <button class="btn btn-outline" data-save="${goal.id}">Update</button>
+            <button class="btn btn-outline right" data-del="${goal.id}">Remove</button>
+          </div>
+        `
+        wrap.appendChild(card)
+      })
+      document.getElementById('totalSaved').textContent = fmt(totalSaved)
+    }
+
+    document.getElementById('addGoal').addEventListener('click', ()=>{
+      const name = document.getElementById('goalName').value.trim()
+      const target = parseFloat(document.getElementById('goalTarget').value)
+      const saved = parseFloat(document.getElementById('goalSaved').value||0)
+      if (
+  !name ||
+  !Number.isFinite(target) ||
+  target <= 0 ||
+  !Number.isFinite(saved) ||
+  saved < 0
+) {
+  alert('Enter a goal name, a target greater than zero, and savings of zero or more.');
+  return;
+}
+      state.goals.push({id:uid(), name, target, saved})
+      document.getElementById('goalName').value=''; document.getElementById('goalTarget').value=''; document.getElementById('goalSaved').value=''
+      render();
+      forecastGoals();
+    })
+
+    document.getElementById('goals-container').addEventListener('click', (e)=>{
+      const idDel = e.target.getAttribute('data-del')
+      if(idDel){ state.goals = state.goals.filter(g=> g.id!==idDel); render(); forecastGoals(); return }
+      const idSave = e.target.getAttribute('data-save')
+      if(idSave){
+        const input = document.querySelector(`[data-edit-saved="${idSave}"]`)
+        const add = Number(input.value);
+
+if (
+  input.value.trim() === '' ||
+  !Number.isFinite(add) ||
+  add <= 0
+) {
+  alert('Enter an amount greater than zero to add to your savings.');
+  return;
+}
+        state.goals = state.goals.map(g=> g.id===idSave? {...g, saved: Number(g.saved||0) + add}: g)
+        input.value=''
+        render(); forecastGoals();
+      }
+    })
+
+    /*********** AI: Insights & Forecasts ***********/
+    // IMPORTANT: For production, do NOT call OpenAI directly from the browser.
+    // Create a simple server/proxy endpoint that injects your API key securely.
+    // Then, set API_BASE to your proxy (e.g., /api/chat). For demo purposes, this
+    // points to OpenAI's public endpoint and expects window.OPENAI_API_KEY to be set.
+
+   // Demo mode: use local budgeting tips.
+// Live AI requires a separate secure backend.
+async function getAICompletion(messages, model) {
+  return null;
+}
+
+    async function runInsights(){
+      // Lightweight tips that consider user type, income & expenses
+      const totalIncome = Number(document.getElementById('totalIncome').textContent.replace(/[$,]/g,'')||0)
+      const totalExpenses = Number(document.getElementById('totalExpenses').textContent.replace(/[$,]/g,'')||0)
+      const disposable = Math.max(0, totalIncome - totalExpenses)
+
+      const sys = { role:'system', content:'You are a concise, premium financial assistant for a budgeting app. Keep responses short with 3 JSON bullet tips.' }
+      const usr = { role:'user', content: `Profile: ${state.profile.type||'general'}. Income sources: ${JSON.stringify(state.incomes)}. Monthly income: ${totalIncome}. Expenses: ${JSON.stringify(state.expenses)} (total ${totalExpenses}). Goals: ${JSON.stringify(state.goals)}. Available monthly savings: ${disposable}. Return JSON array of 3 short, specific tips with fields: title, tip.` }
+      const content = await getAICompletion([sys, usr])
+      const tipsEl = document.getElementById('aiTips')
+      tipsEl.innerHTML = ''
+      if(!content){
+        // Fallback deterministic tips (no API key)
+        const fallback = [
+          {title:'Automate savings', tip:`Move ${fmt((disposable*0.3).toFixed(0))}/mo to your top goal.`},
+          {title:'Trim top category', tip:'Reduce your largest expense by 10% this month.'},
+          {title:'Weekly cadence', tip:'Break monthly savings into a weekly auto-transfer.'}
+        ]
+        fallback.forEach(t=>{
+          const p = document.createElement('div'); p.className='badge'; p.textContent = `${t.title} — ${t.tip}`; tipsEl.appendChild(p)
+        })
+        return
+      }
+      try{
+        const tips = JSON.parse(content)
+        tips.forEach(t=>{
+          const p = document.createElement('div'); p.className='badge'; p.textContent = `${t.title} — ${t.tip}`; tipsEl.appendChild(p)
+        })
+      }catch(e){
+        const p = document.createElement('div'); p.className='badge'; p.textContent = content; tipsEl.appendChild(p)
+      }
+    }
+
+    async function forecastGoals(){
+      const goals = state.goals.map(g=> ({ name:g.name, target:g.target, saved:g.saved }))
+      if(goals.length===0){
+        // clear any previous forecast visuals
+        document.querySelectorAll('#goals-container .swipe-card').forEach(c=>{ c.classList.remove('urgent'); const info=c.querySelector('.forecast-info'); if(info) info.remove() })
+        return
+      }
+      // Build prompt — short & JSON-focused
+      const messages = [{
+        role: 'user', content: `Given these goals: ${JSON.stringify(goals)} and current monthly disposable income of ${document.getElementById('totalIncome').textContent} minus expenses ${document.getElementById('totalExpenses').textContent}, provide JSON only: [{"name":"Emergency Fund","forecastWeeks":8,"weeklySuggestion":50,"status":"on track"}] . Assume weeklySuggestion <= disposable/4.3.`
+      }]
+      const content = await getAICompletion(messages)
+
+      const goalCards = document.querySelectorAll('#goals-container .swipe-card')
+      let forecasts = []
+      if(content){
+        try{ forecasts = JSON.parse(content) }catch{ forecasts = [] }
+      }
+
+      forecasts.forEach((f,i)=>{
+        const card = goalCards[i]; if(!card) return
+        let forecastText = `Est. time: ${f.forecastWeeks} weeks, Save ${fmt(f.weeklySuggestion)}/week`
+        let info = card.querySelector('.forecast-info')
+        if(!info){ info = document.createElement('p'); info.className='forecast-info'; info.style.fontSize='0.85rem'; info.style.marginTop='6px'; card.appendChild(info) }
+        info.innerText = forecastText
+        if(f.status && String(f.status).toLowerCase().includes('behind')) card.classList.add('urgent'); else card.classList.remove('urgent')
+      })
+    }
+
+    // Manual trigger
+    document.getElementById('runAI').addEventListener('click', ()=>{ runInsights(); forecastGoals() })
+
+    /*********************
+     * Demo Seed Data     *
+     *********************/
+    if(!state._seeded){
+      state.incomes = state.incomes?.length? state.incomes : [
+        {id:uid(), name:'Salary', amount:2600, cadence:'monthly'},
+        {id:uid(), name:'Freelance', amount:200, cadence:'weekly'}
+      ]
+      state.expenses = state.expenses?.length? state.expenses : [
+        {id:uid(), name:'Rent', amount:900, kind:'recurring'},
+        {id:uid(), name:'Groceries', amount:320, kind:'recurring'},
+        {id:uid(), name:'Transport', amount:120, kind:'recurring'}
+      ]
+      state.goals = state.goals?.length? state.goals : [
+        {id:uid(), name:'Emergency Fund', target:2000, saved:400},
+        {id:uid(), name:'New Laptop', target:1200, saved:150}
+      ]
+      state._seeded = true
+    }
+
+    // Initial render & splash
+    render();
+    showSplash();
+
+    // Re-run AI on load (if key exists)
+    setTimeout(()=> { runInsights(); forecastGoals() }, 800)
+    
+    // Service Worker Registration
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').then(registration => {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }).catch(error => {
+          console.error('ServiceWorker registration failed: ', error);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
